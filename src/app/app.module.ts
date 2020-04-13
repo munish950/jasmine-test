@@ -1,14 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
+
+const appRoutes: Routes = [
+  {path: '', component: AppComponent},
+  {path: 'contact', component: ContactFormComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    // RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
