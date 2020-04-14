@@ -1,0 +1,6 @@
+<div>
+  <h3>Number of Votes</h3>
+  <span class="vote_count">{{ voteCount }}</span>
+  <input type="button" class="up_vote_btn" value="Up Vote" (click)="upVote()">
+  <div [ngClass]="{'vote_success': voteCount > 10}">VOTE SUCESS</div>
+</div>

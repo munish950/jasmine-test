@@ -5,6 +5,7 @@ import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { VoteComponent } from './vote/vote.component';
 
 const appRoutes: Routes = [
   {path: '', component: AppComponent},
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,

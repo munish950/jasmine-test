@@ -12,7 +12,7 @@ export class ContactFormComponent {
     constructor(formBuilder: FormBuilder) {
         this.contactForm = formBuilder.group({
             name: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]]
+            email: ['', Validators.required]
         });
     }
 }
