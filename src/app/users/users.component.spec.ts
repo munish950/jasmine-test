@@ -4,37 +4,47 @@ import { of } from 'rxjs';
 
 describe('UserComponent', () => {
     let component: UsersComponent;
-    let service: UsersService;
+    // let service: UsersService;
+    const service = jasmine.createSpyObj('HttpService', ['getUsers', 'addUser']);
 
     beforeEach(() => {
-        component = new UsersComponent(null);
-        service = new UsersService(null);
+        component = new UsersComponent(service);
+       // service = new UsersService(null);
     });
 
-    xit('Should set users property by retrieving data from server', () => {
+    it('Should set users property by retrieving data from server', () => {
         const users = [
             {id: 1, name: 'First'},
             {id: 2, name: 'Second'}
         ];
-        spyOn(service, 'getUsers').and.callFake(() => of(users));
+
+        service.getUsers.and.returnValue(of(users));
+
+        // spyOn(service, 'getUsers').and.callFake(() => of(users));
+       // spyOn(service, 'getUsers').and.returnValue(of(users));
 
         component.ngOnInit();
+
+        expect(service.getUsers).toHaveBeenCalled();
 
         expect(component.users).toBe(users);
 
     });
 
-    xit('Should call server to save new user', () => {
+    it('Should call server to save new user', () => {
         const userObj = {
             id: 2,
             name: 'Test',
         };
-
+        // const service = jasmine.createSpyObj('HttpService', ['addUser']);
+        /*
         const addSpy = spyOn(service, 'addUser').and.callFake(() => {
             return of([]);
         });
+        */
 
         component.insertUser(userObj);
-        expect(addSpy).toHaveBeenCalled();
+
+        expect(service.addUser).toHaveBeenCalled();
     });
 });

@@ -59,7 +59,7 @@ describe('VoteComponent', () => {
   it('Should increment vote count by 1 on Up Vote button click', () => {
     component.voteCount = 10;
     const button = fixture.debugElement.query(By.css('.up_vote_btn'));
-    console.log(button);
+    // console.log(button);
     button.triggerEventHandler('click', null);
 
     // fixture.detectChanges();

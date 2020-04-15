@@ -10,6 +10,7 @@ describe('Validate Contact Form', () => {
     it('Contact form contain 2 form fields', () => {
         expect(contactComponent.contactForm.contains('name')).toBeTruthy();
         expect(contactComponent.contactForm.contains('email')).toBeTruthy();
+        expect(contactComponent.contactForm.contains('contact')).toBeTruthy();
     });
 
     it('Should make name control required', () => {
@@ -22,6 +23,17 @@ describe('Validate Contact Form', () => {
         const contactFormEmail = contactComponent.contactForm.get('email');
         contactFormEmail.setValue('');
         expect(contactFormEmail.valid).toBeFalsy();
+    });
+
+    it('Should contain column contact with length equal to 10', () => {
+        const contactControl = contactComponent.contactForm.get('contact');
+
+        contactControl.setValue('abcdefgh');
+        expect(contactControl.valid).toBeFalsy();
+
+        contactControl.setValue('abcdefghijkl');
+        expect(contactControl.valid).toBeFalsy();
+
     });
 
 
